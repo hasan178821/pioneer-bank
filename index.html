@@ -80,9 +80,9 @@
         //deposit button event handler
         const dipositButton = document.getElementById("addDiposit");
         dipositButton.addEventListener("click", function() {
-
-            const dipositDoller = document.getElementById("dipositAmount").value;
-            const dipositNumber = parseFloat(dipositDoller);
+            // const dipositDoller = document.getElementById("dipositAmount").value;
+            // const dipositNumber = parseFloat(dipositDoller);
+            const dipositNumber = getInputNumber("dipositAmount");
 
             // const currentDeposit = document.getElementById("currentDeposit").innerText;
             // const currentDepositNum = parseFloat(currentDeposit);
@@ -91,7 +91,6 @@
             updateSpanText("currentDeposit", dipositNumber);
 
             document.getElementById("dipositAmount").value = "";
-
             // const balance = document.getElementById("currentBalance").innerText;
             // const totalBalance = parseFloat(balance);
             // const totalSavings = dipositNumber + totalBalance;
