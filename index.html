@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pioneer Bank</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div id="login-area">
+        <h1 class="text-center">Welcome To Pioneer Bank</h1>
+        <div class="submit-form">
+            <h2>Login</h2>
+            <input type="text" class="form-control mb-3" placeholder="Enter your E-mail">
+            <input type="password" class="form-control mb-3" placeholder="Enter your Password">
+            <button id="login" class="btn btn-success">Enter</button>
+        </div>
+    </div>
+
+    <div id="transaction-area">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="status diposit">
+                    <h4>Diposit</h4>
+                    <h2> $<span id="currentDeposit">00</span> </h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="status withdraw">
+                    <h4>Withdraw</h4>
+                    <h2>$00</h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="status balance">
+                    <h4>Balance</h4>
+                    <h2> $<span id="currentBalance">1240</span></h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="submit-form amount">
+                    <h5>Diposit</h5>
+                    <input id="dipositAmount" type="text" class="form-control mb-3" placeholder="$ amount you want to diposit">
+                    <button id="addDiposit" class="btn btn-success">Diposit</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="submit-form amount">
+                    <h5>Withdraw</h5>
+                    <input type="text" class="form-control mb-3" placeholder="$ amount you want to withdraw">
+                    <button class="btn btn-success">Withdraw</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+        // login button event handler
+        const loginButton = document.getElementById("login");
+        loginButton.addEventListener("click", function() {
+            const loginArea = document.getElementById("login-area");
+            loginArea.style.display = "none";
+
+            const transactionArea = document.getElementById("transaction-area");
+            transactionArea.style.display = "block";
+        })
+
+        //deposit button event handler
+        const dipositButton = document.getElementById("addDiposit");
+        dipositButton.addEventListener("click", function() {
+
+            const dipositDoller = document.getElementById("dipositAmount").value;
+            const dipositNumber = parseFloat(dipositDoller);
+
+            // const currentDeposit = document.getElementById("currentDeposit").innerText;
+            // const currentDepositNum = parseFloat(currentDeposit);
+            // const depositTotal = dipositNumber + currentDepositNum;
+            // document.getElementById("currentDeposit").innerText = depositTotal;
+            updateSpanText("currentDeposit", dipositNumber);
+
+            document.getElementById("dipositAmount").value = "";
+
+            // const balance = document.getElementById("currentBalance").innerText;
+            // const totalBalance = parseFloat(balance);
+            // const totalSavings = dipositNumber + totalBalance;
+            // document.getElementById("currentBalance").innerText = totalSavings;
+            updateSpanText("currentBalance", dipositNumber);
+        })
+
+        function updateSpanText(id, dipositNumber) {
+            const balance = document.getElementById(id).innerText;
+            const totalBalance = parseFloat(balance);
+            const totalSavings = dipositNumber + totalBalance;
+            document.getElementById(id).innerText = totalSavings;
+        }
+    </script>
+</body>
+
+</html>
